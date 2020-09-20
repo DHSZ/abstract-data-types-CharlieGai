@@ -1,0 +1,44 @@
+{
+  "tests": [
+    {
+      "name": "Test Binary Tree",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest test_adt_binary_tree.py",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 20
+    },
+    {
+      "name": "Test Stack",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest test_adt_stack.py",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 10
+    },
+    {
+      "name": "Test Queue",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest test_adt_queue.py",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 10
+    },
+    {
+      "name": "Test Linked List",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest test_adt_linked_list.py",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 20
+    }
+  ]
+}
