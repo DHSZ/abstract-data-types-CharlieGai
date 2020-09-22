@@ -31,7 +31,7 @@ class LinkedList:
 
     # Method to add a new node at the end of the linked list
     def add_to_end(self, node):
-        pass
+        self.data.append(node)
 
     # Method to add a new node after an existing element
     def add_after(self, target_node_data, new_node):
