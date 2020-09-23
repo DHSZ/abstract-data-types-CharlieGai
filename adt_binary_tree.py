@@ -21,18 +21,18 @@ class Node:
         # else:
         #     self.value = data
 
-    def find(self, value):
-        if value < self.value:
+    def find(self, val):
+        if val < self.value:
             if self.left == None:
                 return None
             else:
-                self.left.find(value)
-        elif value > self.value:
+                return self.left.find(val)
+        elif val > self.value:
             if self.right == None:
                 return None
             else:
-                self.right.find(value)
-        elif value == self.value:
+                return self.right.find(val)
+        elif val == self.value:
             return self
         else:
             return None
