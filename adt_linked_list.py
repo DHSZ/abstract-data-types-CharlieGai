@@ -26,8 +26,10 @@ class LinkedList:
 
     # Method to add a new node to the start of the linked list
     def add_to_start(self, node):
+        # for item, index in enumerate(nodes):
+
         node.next = self.head
-        self.head = node
+        self.head = node.data
 
     # Method to add a new node at the end of the linked list
     def add_to_end(self, node):

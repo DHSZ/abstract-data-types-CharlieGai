@@ -45,3 +45,5 @@ def test_find_missing_node():
     tree.add_node(11)
 
     assert tree.find_node(10) is None
+
+test_find_existing_node()
