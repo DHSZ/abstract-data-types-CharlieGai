@@ -1,5 +1,7 @@
 # Class for each individual node within the Linked List
 # you do not need to change this class
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -11,23 +13,14 @@ class LinkedList:
     # This method will run when you create a new
     # linked list object instance
     def __init__(self, elements=None):
-        if elements:
-            self.head = Node(elements[0])
-            # next item to link with
-            next_item = self.head
-            for i in range(1, len(elements)):
-                next_item.next = Node(elements[i])
-                next_item = next_item.next
-        else:
+        if elements is None:
             self.head = None
-        # for item, index in enumerate(list):
-        #     item = Node(item)
-        # for item, index in enumerate(list.reverse):
-        #     if index == len(list.reverse):
-        #         self.head = list[0]
-        #     else:
-        #         if index != 0:
-        #             item.next = list.reverse[index-1]
+        else:
+            self.head = Node(elements[0])
+            cur = self.head
+            for i in range(1, len(elements)):
+                cur.next = Node(elements[i])
+                cur = cur.next
 
     # This method will make a nicely printed version
     # of your linked list structure, don't change it!
@@ -44,32 +37,47 @@ class LinkedList:
     def add_to_start(self, node):
         node.next = self.head
         self.head = node
-    
+
     # Method to add a new node at the end of the linked list
     def add_to_end(self, node):
-        if self.head:
-            next_item = self.head
-            while(next_item.next):
-                next_item = next_item.next
-            next_item.next=node
-        else:
+        if self.head is None:
             self.head = node
+        else:
+            self.add_to_end_helper(self.head, node)
 
+    def add_to_end_helper(self, cur, node):
+        if cur.next is None:
+            cur.next = node
+        else:
+            self.add_to_end_helper(cur.next, node)
 
     # Method to add a new node after an existing element
     def add_after(self, target_node_data, new_node):
-        next_item = self.head
-        while (next_item.next.data != target_node_data) and (next_item.next.next.data != target_node_data):
-            next_item = next_item.next
-        new_node.next = next_item.next.next
-        next_item.next.next = new_node
+        cur = self.head
+        not_found = True
+        while not_found:
+            if cur.data == target_node_data:
+                not_found = False
+            else:
+                cur = cur.next
+        new_node.next = cur.next
+        cur.next = new_node
 
     # Method to remove a node from the linked list
     def remove_node(self, target_node_data):
-        next_item = self.head
-        while (next_item.next.data != target_node_data) and (next_item.next.next.data != target_node_data):
-            next_item = next_item.next
-        next_item.next = next_item.next.next
+        if self.head is None:
+            return
+        elif self.head.data == target_node_data:
+            self.head = self.head.next
+        else:
+            self.remove_helper(self.head.next, self.head, target_node_data)
 
+    def remove_helper(self, cur, before, target):
+        if cur is None:
+            return
+        elif cur.data == target:
+            before.next = cur.next
+        else:
+            self.remove_helper(cur.next, cur, target)
 
 
